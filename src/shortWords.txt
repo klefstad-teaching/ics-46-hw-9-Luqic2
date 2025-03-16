@@ -1,3 +1,6 @@
+party
+parts
+carts
 car
 chat
 cheat
@@ -6,3 +9,6 @@ chair
 hair
 hear
 bear
+cards
+curds
+curls
