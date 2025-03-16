@@ -106,7 +106,7 @@ void print_word_ladder(const vector<string>& ladder) {
 
 void verify_word_ladder() {
     set<string> word_list;
-    load_words(word_list, "words.txt");
+    load_words(word_list, "src/words.txt");
 
     if (generate_word_ladder("marty", "curls", word_list).size() != 6)
         error("marty", "curls", "is not generating shortest path.");
