@@ -41,17 +41,21 @@ TEST(WordLadder, testGenerateWordLadder_shortWords) {
   EXPECT_EQ(output2, "Word ladder found: party parts carts cards curds curls \n");
 }
 
-// TEST(WordLadder, testGenerateWordLadder_word) {
-//   set<string> word_list;
-//   load_words(word_list, "src/words.txt");
+TEST(WordLadder, testGenerateWordLadder_word) {
+  set<string> word_list;
+  load_words(word_list, "src/words.txt");
 
-//   EXPECT_EQ(generate_word_ladder("cat", "dog", word_list).size(), 4);
-//   EXPECT_EQ(generate_word_ladder("marty", "curls", word_list).size(), 6);
-//   EXPECT_EQ(generate_word_ladder("code", "data", word_list).size(), 6);
-//   EXPECT_EQ(generate_word_ladder("work", "play", word_list).size(), 6);
-//   EXPECT_EQ(generate_word_ladder("sleep", "awake", word_list).size(), 8);
-//   EXPECT_EQ(generate_word_ladder("car", "cheat", word_list).size(), 4);
-// }
+  // EXPECT_EQ(generate_word_ladder("cat", "dog", word_list).size(), 4);
+  // EXPECT_EQ(generate_word_ladder("marty", "curls", word_list).size(), 6);
+  // EXPECT_EQ(generate_word_ladder("code", "data", word_list).size(), 6);
+  // EXPECT_EQ(generate_word_ladder("work", "play", word_list).size(), 6);
+  // EXPECT_EQ(generate_word_ladder("sleep", "awake", word_list).size(), 8);
+  // EXPECT_EQ(generate_word_ladder("car", "cheat", word_list).size(), 4);
+  vector<string> ladder1 = generate_word_ladder("zoos", "sleep", word_list);
+  EXPECT_EQ(ladder1.size(), 8);
+  print_word_ladder(ladder1);
+  EXPECT_EQ(generate_word_ladder("were", "were", word_list).size(), 0);
+}
 
 TEST(Dijkstra, testDijkstraShortestPath) {
   Graph G;
@@ -82,5 +86,4 @@ TEST(Dijkstra, testExtractShortestPath) {
   EXPECT_EQ(output1, "0 3 5 6 \nTotal cost is 4\n");
 
   EXPECT_EQ(distances[destination], 12);
-
 }
