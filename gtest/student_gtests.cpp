@@ -70,7 +70,7 @@ TEST(Dijkstra, testDijkstraShortestPath) {
   EXPECT_EQ(output1, "-1 3 1 0 \nTotal cost is 4\n");
 }
 
-TEST(Dijkstra, testExtractShortestPath) {
+TEST(Dijkstra, testExtractShortestPath_largeTxt) {
   Graph G;
   file_to_graph("src/large.txt", G);
 
@@ -87,3 +87,21 @@ TEST(Dijkstra, testExtractShortestPath) {
 
   EXPECT_EQ(distances[destination], 12);
 }
+
+// TEST(Dijkstra, testExtractShortestPath_largestTxt) {
+//   Graph G;
+//   file_to_graph("src/largest.txt", G);
+
+//   vector<int> previous(G.size(), -1);
+//   vector<int> distances = dijkstra_shortest_path(G, 0, previous);
+
+//   int destination = 2;
+//   vector<int> path1 = extract_shortest_path(distances, previous, destination);
+  
+//   testing::internal::CaptureStdout();
+//   print_path(path1, path1.size());
+//   string output1 = testing::internal::GetCapturedStdout();
+//   EXPECT_EQ(output1, "0 3 5 6 \nTotal cost is 4\n");
+
+//   EXPECT_EQ(distances[destination], 12);
+// }

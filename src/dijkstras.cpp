@@ -11,8 +11,14 @@ vector<int> dijkstra_shortest_path(const Graph& G, int source, vector<int>& prev
     previous[source] = -1; // UNDEFINED
 
     vector<bool> visited(numVertices, false);
+    
+    struct MinHeap {
+        bool operator() (const pair<int, int>& a, const pair<int, int>& b) {
+            return a.second > b.second;
+        }
+    };
 
-    priority_queue<pair<int, int>, vector<pair<int, int>>, greater<pair<int, int>> > minHeap; // pair<vertex, weight>
+    priority_queue<pair<int, int>, vector<pair<int, int>>, MinHeap > minHeap; // pair<vertex, weight>
     minHeap.push({source, 0});
 
     while ( !minHeap.empty() ) {
