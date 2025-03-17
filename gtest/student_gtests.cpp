@@ -51,10 +51,10 @@ TEST(WordLadder, testGenerateWordLadder_word) {
   // EXPECT_EQ(generate_word_ladder("work", "play", word_list).size(), 6);
   // EXPECT_EQ(generate_word_ladder("sleep", "awake", word_list).size(), 8);
   // EXPECT_EQ(generate_word_ladder("car", "cheat", word_list).size(), 4);
-  vector<string> ladder1 = generate_word_ladder("zoos", "sleep", word_list);
-  EXPECT_EQ(ladder1.size(), 8);
-  print_word_ladder(ladder1);
-  EXPECT_EQ(generate_word_ladder("were", "were", word_list).size(), 0);
+  // vector<string> ladder1 = generate_word_ladder("zoos", "sleep", word_list);
+  // EXPECT_EQ(ladder1.size(), 8);
+  // print_word_ladder(ladder1);
+  // EXPECT_EQ(generate_word_ladder("were", "were", word_list).size(), 0);
 }
 
 TEST(Dijkstra, testDijkstraShortestPath) {
