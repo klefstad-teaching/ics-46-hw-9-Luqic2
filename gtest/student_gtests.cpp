@@ -18,6 +18,10 @@ TEST(WordLadder, testEditDistanceWithin) {
   EXPECT_TRUE(edit_distance_within("cheat", "chat", 1));
 
   EXPECT_TRUE(edit_distance_within("car", "care", 1));
+
+  EXPECT_TRUE(edit_distance_within("were", "were", 1));
+
+  EXPECT_FALSE(edit_distance_within("ware", "fair", 1));
 }
 
 TEST(WordLadder, testGenerateWordLadder_shortWords) {
@@ -28,13 +32,13 @@ TEST(WordLadder, testGenerateWordLadder_shortWords) {
   testing::internal::CaptureStdout();
   print_word_ladder(wordLadder1);
   string output1 = testing::internal::GetCapturedStdout();
-  EXPECT_EQ(output1, "car cat chat cheat \n");
+  EXPECT_EQ(output1, "Word ladder found: car cat chat cheat \n");
 
   vector<string> wordLadder2 = generate_word_ladder("party", "curls", word_list);
   testing::internal::CaptureStdout();
   print_word_ladder(wordLadder2);
   string output2 = testing::internal::GetCapturedStdout();
-  EXPECT_EQ(output2, "party parts carts cards curds curls \n");
+  EXPECT_EQ(output2, "Word ladder found: party parts carts cards curds curls \n");
 }
 
 // TEST(WordLadder, testGenerateWordLadder_word) {
@@ -59,7 +63,7 @@ TEST(Dijkstra, testDijkstraShortestPath) {
   testing::internal::CaptureStdout();
   print_path(previous, previous.size());
   string output1 = testing::internal::GetCapturedStdout();
-  EXPECT_EQ(output1, "-1 3 1 0 ");
+  EXPECT_EQ(output1, "-1 3 1 0 \nTotal cost is 4\n");
 }
 
 TEST(Dijkstra, testExtractShortestPath) {
@@ -75,7 +79,7 @@ TEST(Dijkstra, testExtractShortestPath) {
   testing::internal::CaptureStdout();
   print_path(path1, path1.size());
   string output1 = testing::internal::GetCapturedStdout();
-  EXPECT_EQ(output1, "0 3 5 6 ");
+  EXPECT_EQ(output1, "0 3 5 6 \nTotal cost is 4\n");
 
   EXPECT_EQ(distances[destination], 12);
 

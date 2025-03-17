@@ -44,7 +44,7 @@ bool edit_distance_within(const std::string& str1, const std::string& str2, int 
     // finished comparing but one word has an extra chr, count as diff
     if (i < len1 || j < len2) ++differences;
 
-    return differences == 1;
+    return differences <= d;
 }
 
 bool is_adjacent(const string& word1, const string& word2) {
@@ -53,7 +53,6 @@ bool is_adjacent(const string& word1, const string& word2) {
 
 vector<string> generate_word_ladder(const string& begin_word, const string& end_word, const set<string>& word_list) {
     queue<vector<string>> ladderQ;
-    ladderQ.push({"Word ladder found: "});
     ladderQ.push({begin_word});
 
     set<string> visited;
@@ -83,7 +82,7 @@ vector<string> generate_word_ladder(const string& begin_word, const string& end_
             }
         }
     }
-    return {"No word ladder found."};
+    return {"No word ladder found. "};
 }
 
 void load_words(set<string> & word_list, const string& file_name) {
@@ -101,6 +100,9 @@ void load_words(set<string> & word_list, const string& file_name) {
 }
 
 void print_word_ladder(const vector<string>& ladder) {
+    if (!ladder.empty())
+        cout << "Word ladder found: ";
+
     for (const auto s : ladder)
         cout << s << " ";
     cout << endl;
