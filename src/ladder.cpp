@@ -11,9 +11,9 @@ bool edit_distance_within(const std::string& str1, const std::string& str2, int 
     int len1 = str1.length();
     int len2 = str2.length();
 
-    // if len diff > 1, can't be adjacent
+    // if len diff > d, can't be adjacent
     // adjacanecy only applies to one insertion/deletion/substitution
-    if ( abs(len1 - len2) > 1 ) return false;
+    if ( abs(len1 - len2) > d ) return false;
 
     int i = 0;
     int j = 0;
@@ -23,9 +23,9 @@ bool edit_distance_within(const std::string& str1, const std::string& str2, int 
         if (str1[i] != str2[j]) {
             ++differences;
             
-            // immediately break when differences > 1 
+            // immediately break when differences > d 
             // b/c more than one change is not allowed
-            if (differences > 1) return false;
+            if (differences > d) return false;
 
             // if lens are diff, move pointer of longer word
             if (len1 > len2) ++i; // deletion case
