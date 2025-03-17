@@ -28,13 +28,13 @@ TEST(WordLadder, testGenerateWordLadder_shortWords) {
   testing::internal::CaptureStdout();
   print_word_ladder(wordLadder1);
   string output1 = testing::internal::GetCapturedStdout();
-  EXPECT_EQ(output1, "car -> cat -> chat -> cheat -> ");
+  EXPECT_EQ(output1, "car cat chat cheat \n");
 
   vector<string> wordLadder2 = generate_word_ladder("party", "curls", word_list);
   testing::internal::CaptureStdout();
   print_word_ladder(wordLadder2);
   string output2 = testing::internal::GetCapturedStdout();
-  EXPECT_EQ(output2, "party -> parts -> carts -> cards -> curds -> curls -> ");
+  EXPECT_EQ(output2, "party parts carts cards curds curls \n");
 }
 
 // TEST(WordLadder, testGenerateWordLadder_word) {
